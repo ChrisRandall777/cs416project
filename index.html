@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <html>
 <body>
-  <p>hi!!</p>
-  <svg class="chart" width="120" height="500">
+  <p>hello!</p>
+  <svg class="chart" width="500" height="500">
   </svg>
 
   <script>
-    d3.select(".chart").selectAll("rect").data([4,8,15]).enter().append("rect").attr("width",50).attr("height",50).attr("x",0).attr("y",0).attr("fill","red");
+
+    var xScale = d3.scaleBand().domain(["A","B","C"]).range([0,150])
+    var yScale = d3.scaleLinear().domain([0,100]).range([100,0])
+
+    d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data([20,30,70])
+      .enter().append("rect").attr("width",50).attr("height",function(d){return d;}).attr("x",function(d,i){return 50*i;})
+      .attr("y",function(d){return 100-d;}).attr("fill","red");
+
+    d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
+    d3.select("svg").append("g").attr("transform","translate(50,150)").call(d3.axisBottom(xScale))
+
   </script>
 </body>
 </html>
+
 
