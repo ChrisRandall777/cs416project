@@ -3,7 +3,7 @@
 <html>
 <body>
   <p>hello!</p>
-  <svg class="chart" width="500" height="500">
+  <svg class="chart" width="500" height="200">
   </svg>
 
   <script>
@@ -18,6 +18,17 @@
     d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
     d3.select("svg").append("g").attr("transform","translate(50,150)").call(d3.axisBottom(xScale))
 
+    function next(){
+      d3.select("svg").selectAll("*").remove()
+      var xScale = d3.scaleBand().domain(["A","B","C"]).range([0,150])
+      var yScale = d3.scaleLinear().domain([0,100]).range([100,0])
+      d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data([20,30,100])
+        .enter().append("rect").attr("width",50).attr("height",function(d){return d;}).attr("x",function(d,i){return 50*i;})
+        .attr("y",function(d){return 100-d;}).attr("fill","red");
+      d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
+      d3.select("svg").append("g").attr("transform","translate(50,150)").call(d3.axisBottom(xScale))
+    }
+    
   </script>
 </body>
 </html>
