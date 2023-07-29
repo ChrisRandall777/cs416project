@@ -27,7 +27,7 @@
     var yScale = d3.scaleLinear().domain([0,111]).range([111,0])
     d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data)
       .enter().append("rect").attr("width",50).attr("height",function(d){return d;}).attr("x",function(d,i){return 25*i;})
-      .attr("y",function(d){return 111-d;}).attr("fill","red")
+      .attr("y",function(d){return 111-d;}).attr("fill","red").attr("border",4)
       .on("mouseover",function(d){
         d3.select("#tooltip").style("opacity",1)
           .style("left",(d3.event.pageX)+"px")
@@ -36,7 +36,7 @@
       }).on("mouseout",function(){d3.select("#tooltip").style("opacity",0)});
     
     d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
-    d3.select("svg").append("g").attr("transform","translate(50,150)").call(d3.axisBottom(xScale))
+    d3.select("svg").append("g").attr("transform","translate(50,161)").call(d3.axisBottom(xScale))
       .selectAll("text").style("text-anchor","end").attr("transform","rotate(-65)");
 
     var count = 1
