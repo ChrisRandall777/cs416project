@@ -13,19 +13,21 @@
 </style>
 <html>
 <body>
-  <p>hi</p>
-  <svg class="chart" width="500" height="200">
+  <p>hello!</p>
+  <svg class="chart" width="1000" height="200">
   </svg>
   <button onclick="next()">Next</button>
   <div id="tooltip"></div>
   
   <script>
-    
-    var xScale = d3.scaleBand().domain(["A","B","C"]).range([0,150])
-    var yScale = d3.scaleLinear().domain([0,100]).range([100,0])
-    d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data([20,30,70])
-      .enter().append("rect").attr("width",50).attr("height",function(d){return d;}).attr("x",function(d,i){return 50*i;})
-      .attr("y",function(d){return 100-d;}).attr("fill","red")
+
+    var teams = ["Dodgers","Astros","Braves","Mets","Yankees","Cardinals","Guardians","Blue Jays","Mariners","Padres","Phillies","Rays","Orioles","White Sox","Giants","Red Sox","Twins","Diamondbacks","Cubs","Angels","Marlins","Rockies","Rangers","Tigers","Royals","Reds","Pirates","Athletics","Nationals"]
+    var data = [111,106,101,101,99,93,92,92,90,89,87,86,86,83,81,81,78,78,74,74,73,69,68,68,66,65,62,62,60,55]
+    var xScale = d3.scaleBand().domain(teams).range([0,750])
+    var yScale = d3.scaleLinear().domain([0,111]).range([111,0])
+    d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data)
+      .enter().append("rect").attr("width",50).attr("height",function(d){return d;}).attr("x",function(d,i){return 25*i;})
+      .attr("y",function(d){return 111-d;}).attr("fill","red")
       .on("mouseover",function(d){
         d3.select("#tooltip").style("opacity",1)
           .style("left",(d3.event.pageX)+"px")
