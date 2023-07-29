@@ -14,7 +14,7 @@
 <html>
 <body>
   <p>hello!!</p>
-  <svg class="chart" width="1000" height="200">
+  <svg class="chart" width="1200" height="250">
   </svg>
   <button onclick="next()">Next</button>
   <div id="tooltip"></div>
@@ -36,8 +36,8 @@
       }).on("mouseout",function(){d3.select("#tooltip").style("opacity",0)});
     
     d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
-      .selectAll("text").style("text-anchor","end").attr("transform","rotate(-65)");
     d3.select("svg").append("g").attr("transform","translate(50,150)").call(d3.axisBottom(xScale))
+      .selectAll("text").style("text-anchor","end").attr("transform","rotate(-65)");
 
     var count = 1
 
