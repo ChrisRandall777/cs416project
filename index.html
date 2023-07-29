@@ -21,7 +21,7 @@
   
   <script>
 
-    var teams = ["Dodgers","Astros","Braves","Mets","Yankees","Cardinals","Guardians","Blue Jays","Mariners","Padres","Phillies","Rays","Orioles","White Sox","Giants","Red Sox","Twins","Diamondbacks","Cubs","Angels","Marlins","Rockies","Rangers","Tigers","Royals","Reds","Pirates","Athletics","Nationals"]
+    var teams = ["Dodgers","Astros","Braves","Mets","Yankees","Cardinals","Guardians","Blue Jays","Mariners","Padres","Phillies","Brewers","Rays","Orioles","White Sox","Giants","Red Sox","Twins","Diamondbacks","Cubs","Angels","Marlins","Rockies","Rangers","Tigers","Royals","Reds","Pirates","Athletics","Nationals"]
     var data = [111,106,101,101,99,93,92,92,90,89,87,86,86,83,81,81,78,78,74,74,73,69,68,68,66,65,62,62,60,55]
     var xScale = d3.scaleBand().domain(teams).range([0,750])
     var yScale = d3.scaleLinear().domain([0,111]).range([111,0])
@@ -37,7 +37,7 @@
     
     d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
     d3.select("svg").append("g").attr("transform","translate(50,161)").call(d3.axisBottom(xScale))
-      .selectAll("text").style("text-anchor","end").attr("transform","rotate(-80)");
+      .selectAll("text").style("text-anchor","end").attr("transform","rotate(-65)");
 
     var count = 1
 
