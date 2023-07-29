@@ -26,8 +26,8 @@
     var xScale = d3.scaleBand().domain(teams).range([0,750])
     var yScale = d3.scaleLinear().domain([0,111]).range([111,0])
     d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data)
-      .enter().append("rect").attr("width",50).attr("height",function(d){return d;}).attr("x",function(d,i){return 25*i;})
-      .attr("y",function(d){return 111-d;}).attr("fill","red").attr("border",4)
+      .enter().append("rect").attr("width",50).attr("height",function(d){return d;}).attr("x",function(d,i){return 25*(i-1);})
+      .attr("y",function(d){return 111-d;}).attr("fill","red")
       .on("mouseover",function(d){
         d3.select("#tooltip").style("opacity",1)
           .style("left",(d3.event.pageX)+"px")
