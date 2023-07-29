@@ -13,7 +13,7 @@
 </style>
 <html>
 <body>
-  <p>hello!</p>
+  <p>hello!!</p>
   <svg class="chart" width="1200" height="250">
   </svg>
   <button onclick="next()">Next</button>
@@ -37,7 +37,7 @@
     
     d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
     d3.select("svg").append("g").attr("transform","translate(50,161)").call(d3.axisBottom(xScale))
-      .selectAll("text").style("text-anchor","end").attr("transform","rotate(-65)").attr("transform","translate(-10,0)");
+      .selectAll("text").style("text-anchor","end").attr("transform","translate(-10,0)").attr("transform","rotate(-65)");
 
     var count = 1
 
