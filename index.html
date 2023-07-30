@@ -13,10 +13,8 @@
 </style>
 <html>
 <body>
-  <div id="text1">
-    <h style="position:relative; left:325px; top:20px;">MLB Team Wins 2022</h>
-    <button onclick="next()" style="position:relative; left:225px; top:300px;">Next</button>
-  </div>
+  <h id="titletext" style="position:relative; left:325px; top:20px;">MLB Team Wins 2022</h>
+  <button onclick="next()" style="position:relative; left:225px; top:300px;">Next</button>
   <svg class="chart" width="1200" height="250">
   </svg>
   <div id="tooltip"></div>
@@ -44,6 +42,7 @@
     var count = 1
 
     function next(){
+      d3.select("#titletext").text("new")
       d3.select("svg").selectAll("*").remove()
       if(count == 1){
         d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data([20,40,20])
