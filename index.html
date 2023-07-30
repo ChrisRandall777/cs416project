@@ -77,6 +77,8 @@ d3.select(".chart")
       else if(count == 2){
         count = 1
         d3.select("svg").selectAll("*").remove()
+        d3.select("#titletext").text("MLB Team Wins 2022")
+        d3.select("#yaxis").text("Wins")
         const annotations = [
   {
     note: {
