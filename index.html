@@ -55,6 +55,28 @@ d3.select(".chart")
   .append("g")
   .call(makeAnnotations)
 
+    const annotations2 = [
+  {
+    note: {
+      label: "",
+      title: "Hover over bar to see BA",
+      align: "middle",
+      wrap: 200,
+      padding: 10
+    },
+    color: ["purple"],
+    x: 600,
+    y: 40,
+    dy: 0,
+    dx: 0
+  }
+]
+
+const makeAnnotations2 = d3.annotation()
+  .annotations(annotations2)
+d3.select(".chart")
+  .append("g")
+  .call(makeAnnotations2)
 
     var teams = ["Dodgers","Astros","Braves","Mets","Yankees","Cardinals","Guardians","Blue Jays","Mariners","Padres","Phillies","Brewers","Rays","Orioles","White Sox","Giants","Red Sox","Twins","Diamondbacks","Cubs","Angels","Marlins","Rockies","Rangers","Tigers","Royals","Reds","Pirates","Athletics","Nationals"]
     var data = [111,106,101,101,99,93,92,92,90,89,87,86,86,83,81,81,78,78,74,74,73,69,68,68,66,65,62,62,60,55]
@@ -200,28 +222,7 @@ d3.select(".chart")
   .append("g")
   .call(makeAnnotations)
 
-              const annotations2 = [
-  {
-    note: {
-      label: "",
-      title: "Hover over bar to see BA",
-      align: "middle",
-      wrap: 200,
-      padding: 10
-    },
-    color: ["purple"],
-    x: 600,
-    y: 40,
-    dy: 0,
-    dx: 0
-  }
-]
-
-const makeAnnotations2 = d3.annotation()
-  .annotations(annotations2)
-d3.select(".chart")
-  .append("g")
-  .call(makeAnnotations2)
+              
         count += 1
       }
       d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
