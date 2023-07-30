@@ -166,13 +166,8 @@ d3.select(".chart")
               .html("BA: " + d);
           }).on("mouseout",function(){d3.select("#tooltip").style("opacity",0)});
         d3.select("#prevbutton").style("opacity",1)
-        count += 1
-      }
-      d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
-      d3.select("svg").append("g").attr("transform","translate(50,161)").call(d3.axisBottom(xScale))
-        .selectAll("text").style("text-anchor","end").attr("dx","-10px").attr("dy","-2px").attr("transform","rotate(-65)");
 
-      const annotations = [
+             const annotations = [
   {
     note: {
       label: "While the Dodgers had the most wins and lowest ERA, the Blue Jays had the best BA",
@@ -218,6 +213,14 @@ const makeAnnotations2 = d3.annotation()
 d3.select(".chart")
   .append("g")
   .call(makeAnnotations2)
+        
+        count += 1
+      }
+      d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
+      d3.select("svg").append("g").attr("transform","translate(50,161)").call(d3.axisBottom(xScale))
+        .selectAll("text").style("text-anchor","end").attr("dx","-10px").attr("dy","-2px").attr("transform","rotate(-65)");
+
+
     
   </script>
 </body>
