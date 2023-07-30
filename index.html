@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 <style>
 #tooltip {
   opacity: 0;
@@ -24,6 +25,25 @@
   <div id="tooltip"></div>
   
   <script>
+    const annotations = [
+    {
+      note: {
+      label: "The Dodgers got 111 wins, the most in MLB",
+      title: "Dodgers on Top",
+      align: "middle",
+      wrap: 200,
+      padding: 10
+    },
+      color: ["purple"],
+      x: 60,
+      y: 200,
+      dy: 50,
+      dx: 100
+    }
+    ]
+
+    const makeAnnotations = d3.annotation().annotations(annotations)
+    d3.select(".chart").append("g").call(makeAnnotations)
 
     var teams = ["Dodgers","Astros","Braves","Mets","Yankees","Cardinals","Guardians","Blue Jays","Mariners","Padres","Phillies","Brewers","Rays","Orioles","White Sox","Giants","Red Sox","Twins","Diamondbacks","Cubs","Angels","Marlins","Rockies","Rangers","Tigers","Royals","Reds","Pirates","Athletics","Nationals"]
     var data = [111,106,101,101,99,93,92,92,90,89,87,86,86,83,81,81,78,78,74,74,73,69,68,68,66,65,62,62,60,55]
