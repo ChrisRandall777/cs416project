@@ -116,8 +116,8 @@ d3.select(".chart")
     }
     
     function next(){
-      d3.select("svg").selectAll("*").remove()
       if(count == 1){
+        d3.select("svg").selectAll("*").remove()
         d3.select("#titletext").text("MLB Team ERA 2022")
         d3.select("#yaxis").text("ERA")
         var teams2 = ["Dodgers","Astros","Yankees","Rays","Guardians","Braves","Mets","Mariners","Angels","Cardinals","Padres","Brewers","Giants","Marlins","Blue Jays","White Sox","Phillies","Orioles","Twins","Cubs","Tigers","Rangers","Diamondbacks","Athletics","Red Sox","Pirates","Royals","Reds","Nationals","Rockies"]
@@ -148,6 +148,7 @@ d3.select(".chart")
         count += 1
       }
       else if(count == 2){
+        d3.select("svg").selectAll("*").remove()
         d3.select("#titletext").text("MLB Team BA 2022")
         d3.select("#yaxis").text("BA")
         var teams3 = ["Blue Jays","Mets","Red Sox","Dodgers","White Sox","Guardians","Rockies","Braves","Phillies","Cardinals","Nationals","Astros","Twins","Royals","Yankees","Padres","Rays","Rangers","Cubs","Orioles","Reds","Brewers","Giants","Angels","Tigers","Diamondbacks","Marlins","Mariners","Pirates","Athletics"]
