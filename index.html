@@ -46,15 +46,27 @@
     var count = 1
 
     function next(){
-      d3.select("#titletext").text("MLB Team ERA 2022")
-      d3.select("#yaxis").text("ERA")
       d3.select("svg").selectAll("*").remove()
-      var teams2 = ["Dodgers","Astros","Yankees","Rays","Guardians","Braves","Mets","Mariners","Angels","Cardinals","Padres","Brewers","Giants","Marlins","Blue Jays","White Sox","Phillies","Orioles","Twins","Cubs","Tigers","Rangers","Dimondbacks","Athletics","Red Sox","Pirates","Royals","Reds","Nationals","Rockies"]
-      var data2 = [2.8,2.9,3.3,3.41,3.46,3.46,3.57,3.59,3.77,3.79,3.81,3.83,3.85,3.86,3.87,3.92,3.97,3.97,3.98,4,4.04,4.22,4.25,4.52,4.53,4.66,4.7,4.86,5,5.06]
-      var xScale = d3.scaleBand().domain(teams2).range([0,750])
-      var yScale = d3.scaleLinear().domain([0,6]).range([111,0])
       if(count == 1){
+        d3.select("#titletext").text("MLB Team ERA 2022")
+        d3.select("#yaxis").text("ERA")
+        var teams2 = ["Dodgers","Astros","Yankees","Rays","Guardians","Braves","Mets","Mariners","Angels","Cardinals","Padres","Brewers","Giants","Marlins","Blue Jays","White Sox","Phillies","Orioles","Twins","Cubs","Tigers","Rangers","Diamondbacks","Athletics","Red Sox","Pirates","Royals","Reds","Nationals","Rockies"]
+        var data2 = [2.8,2.9,3.3,3.41,3.46,3.46,3.57,3.59,3.77,3.79,3.81,3.83,3.85,3.86,3.87,3.92,3.97,3.97,3.98,4,4.04,4.22,4.25,4.52,4.53,4.66,4.7,4.86,5,5.06]
+        var xScale = d3.scaleBand().domain(teams2).range([0,750])
+        var yScale = d3.scaleLinear().domain([0,6]).range([111,0])
         d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data2)
+          .enter().append("rect").attr("width",25).attr("height",function(d){return 111-yScale(d);}).attr("x",function(d,i){return 25*i;})
+          .attr("y",function(d){return yScale(d);}).attr("fill","red").attr("style", "outline: thin solid black;");
+        count += 1
+      }
+      else{
+        d3.select("#titletext").text("MLB Team BA 2022")
+        d3.select("#yaxis").text("BA")
+        var teams3 = ["Blue Jays","Mets","Red Sox","Dodgers","White Sox","Guardians","Rockies","Braves","Phillies","Cardinals","Nationals","Astros","Twins","Royals","Yankees","Padres","Rays","Rangers","Cubs","Orioles","Reds","Brewers","Giants","Angels","Tigers","Diamondbacks","Marlins","Mariners","Pirates","Athletics"]
+        var data3 = [.264,.259,.258,.257,.256,.254,.254,.253,.253,.252,.249,.249,.248,.244,.241,.241,.239,.239,.238,.236,.235,.235,.234,.233,.231,.23,.23,.222,.216]
+        var xScale = d3.scaleBand().domain(teams3).range([0,750])
+        var yScale = d3.scaleLinear().domain([0,0.275]).range([111,0])
+        d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data3)
           .enter().append("rect").attr("width",25).attr("height",function(d){return 111-yScale(d);}).attr("x",function(d,i){return 25*i;})
           .attr("y",function(d){return yScale(d);}).attr("fill","red").attr("style", "outline: thin solid black;");
         count += 1
@@ -62,7 +74,6 @@
       d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
       d3.select("svg").append("g").attr("transform","translate(50,161)").call(d3.axisBottom(xScale))
         .selectAll("text").style("text-anchor","end").attr("dx","-10px").attr("dy","-2px").attr("transform","rotate(-65)");
-
     }
     
   </script>
