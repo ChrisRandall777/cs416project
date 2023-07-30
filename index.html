@@ -56,7 +56,7 @@
         var yScale = d3.scaleLinear().domain([0,6]).range([111,0])
         d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data2)
           .enter().append("rect").attr("width",25).attr("height",function(d){return 111-yScale(d);}).attr("x",function(d,i){return 25*i;})
-          .attr("y",function(d){return yScale(d);}).attr("fill","grass").attr("style", "outline: thin solid black;");
+          .attr("y",function(d){return yScale(d);}).attr("fill","chartreuse").attr("style", "outline: thin solid black;");
         count += 1
       }
       else{
@@ -68,7 +68,7 @@
         var yScale = d3.scaleLinear().domain([0.2,0.275]).range([111,0])
         d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data3)
           .enter().append("rect").attr("width",25).attr("height",function(d){return 111-yScale(d);}).attr("x",function(d,i){return 25*i;})
-          .attr("y",function(d){return yScale(d);}).attr("fill","mint").attr("style", "outline: thin solid black;");
+          .attr("y",function(d){return yScale(d);}).attr("fill","aquamarine").attr("style", "outline: thin solid black;");
         count += 1
       }
       d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
