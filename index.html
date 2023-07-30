@@ -20,7 +20,7 @@
    <h id="yaxis">Wins</h>
   </div>
   <button onclick="next()" style="position:relative; left:385px; top:50px;">Next</button>
-  <svg class="chart" width="1200" height="250">
+  <svg class="chart" width="1200" height="400">
   </svg>
   <div id="tooltip"></div>
   
@@ -39,8 +39,7 @@
       y: 200,
       dy: 50,
       dx: 100
-    }
-    ]
+    }]
 
     const makeAnnotations = d3.annotation().annotations(annotations)
     d3.select(".chart").append("g").call(makeAnnotations)
@@ -52,6 +51,7 @@
     d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data)
       .enter().append("rect").attr("width",25).attr("height",function(d){return d;}).attr("x",function(d,i){return 25*i;})
       .attr("y",function(d){return 111-d;}).attr("fill","red").attr("style", "outline: thin solid black;");
+    
     
     d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
     d3.select("svg").append("g").attr("transform","translate(50,161)").call(d3.axisBottom(xScale))
@@ -71,6 +71,23 @@
         d3.select(".chart").append("g").attr("transform","translate("+50+","+50+")").selectAll("rect").data(data2)
           .enter().append("rect").attr("width",25).attr("height",function(d){return 111-yScale(d);}).attr("x",function(d,i){return 25*i;})
           .attr("y",function(d){return yScale(d);}).attr("fill","chartreuse").attr("style", "outline: thin solid black;");
+        const annotations = [
+        {
+          note: {
+          label: The Dodgers also led MLB in ERA with a glistening 2.80",
+          title: "Dodgers still on Top",
+          align: "middle",
+          wrap: 200,
+          padding: 10
+        },
+          color: ["purple"],
+          x: 60,
+          y: 200,
+          dy: 50,
+          dx: 100
+        }]
+        const makeAnnotations = d3.annotation().annotations(annotations)
+        d3.select(".chart").append("g").call(makeAnnotations)
         count += 1
       }
       else{
