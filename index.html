@@ -23,13 +23,14 @@
   </div>
   <div style="position:relative; left:355px; top:325px;">
     <button id="prevbutton" onclick="prev()" style="opacity:0">Previous</button>
-    <button onclick="next()">Next</button>
+    <button id="nextbutton" onclick="next()">Next</button>
   </div>
   <svg class="chart" width="1200" height="375">
   </svg>
   <div id="tooltip"></div>
   
   <script>
+  var firstpassdone = false;
 
 const annotations = [
   {
@@ -79,6 +80,8 @@ d3.select(".chart")
         d3.select("svg").selectAll("*").remove()
         d3.select("#titletext").text("MLB Team Wins 2022")
         d3.select("#yaxis").text("Wins")
+        d3.select("#prevbutton").style("opacity",0)
+        d3.select("#nextbutton").style("opacity",1)
         const annotations = [
   {
     note: {
@@ -147,12 +150,17 @@ d3.select(".chart")
 
     const makeAnnotations = d3.annotation().annotations(annotations)
     d3.select(".chart").append("g").call(makeAnnotations)
+    if(firstpassdone){
+      d3.select("#prevbutton").style("opacity",1)
+    }
+    d3.select("#nextbutton").style("opacity",1)
         count += 1
       }
       else if(count == 2){
         d3.select("svg").selectAll("*").remove()
         d3.select("#titletext").text("MLB Team BA 2022")
         d3.select("#yaxis").text("BA")
+        firstpassdone = true;
         var teams3 = ["Blue Jays","Mets","Red Sox","Dodgers","White Sox","Guardians","Rockies","Braves","Phillies","Cardinals","Nationals","Astros","Twins","Royals","Yankees","Padres","Rays","Rangers","Cubs","Orioles","Reds","Brewers","Giants","Angels","Tigers","Diamondbacks","Marlins","Mariners","Pirates","Athletics"]
         var data3 = [.264,.259,.258,.257,.256,.254,.254,.253,.253,.252,.249,.249,.248,.244,.241,.241,.239,.239,.238,.236,.235,.235,.234,.233,.231,.23,.23,.23,.222,.216]
         var xScale = d3.scaleBand().domain(teams3).range([0,750])
@@ -167,6 +175,7 @@ d3.select(".chart")
               .html("BA: " + d);
           }).on("mouseout",function(){d3.select("#tooltip").style("opacity",0)});
         d3.select("#prevbutton").style("opacity",1)
+        d3.select("#nextbutton").style("opacity",0)
 
         const annotations = [
   {
