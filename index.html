@@ -100,8 +100,7 @@ d3.select(".chart")
   .append("g")
   .call(makeAnnotations)
 
-    d3.select("#titletext").text("MLB Team Wins 2022")
-    d3.select("#yaxis").text("Wins")
+
     var teams = ["Dodgers","Astros","Braves","Mets","Yankees","Cardinals","Guardians","Blue Jays","Mariners","Padres","Phillies","Brewers","Rays","Orioles","White Sox","Giants","Red Sox","Twins","Diamondbacks","Cubs","Angels","Marlins","Rockies","Rangers","Tigers","Royals","Reds","Pirates","Athletics","Nationals"]
     var data = [111,106,101,101,99,93,92,92,90,89,87,86,86,83,81,81,78,78,74,74,73,69,68,68,66,65,62,62,60,55]
     var xScale = d3.scaleBand().domain(teams).range([0,750])
@@ -166,61 +165,12 @@ d3.select(".chart")
               .html("BA: " + d);
           }).on("mouseout",function(){d3.select("#tooltip").style("opacity",0)});
         d3.select("#prevbutton").style("opacity",1)
-
-             const annotations = [
-  {
-    note: {
-      label: "While the Dodgers had the most wins and lowest ERA, the Blue Jays had the best BA",
-      title: "Dodgers on Top",
-      align: "middle",
-      wrap: 200,
-      padding: 10
-    },
-    color: ["purple"],
-    x: 60,
-    y: 200,
-    dy: 50,
-    dx: 100
-  }
-]
-
-const makeAnnotations = d3.annotation()
-  .annotations(annotations)
-d3.select(".chart")
-  .append("g")
-  .call(makeAnnotations)
-    }
-
-    const annotations2 = [
-  {
-    note: {
-      label: "",
-      title: "Hover to see BA",
-      align: "middle",
-      wrap: 200,
-      padding: 10
-    },
-    color: ["purple"],
-    x: 650,
-    y: 40,
-    dy: 0,
-    dx: 0
-  }
-]
-
-const makeAnnotations2 = d3.annotation()
-  .annotations(annotations2)
-d3.select(".chart")
-  .append("g")
-  .call(makeAnnotations2)
-        
         count += 1
       }
       d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
       d3.select("svg").append("g").attr("transform","translate(50,161)").call(d3.axisBottom(xScale))
         .selectAll("text").style("text-anchor","end").attr("dx","-10px").attr("dy","-2px").attr("transform","rotate(-65)");
-
-
+    }
     
   </script>
 </body>
