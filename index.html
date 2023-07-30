@@ -172,7 +172,7 @@ d3.select(".chart")
   {
     note: {
       label: "While the Dodgers had the most wins and lowest ERA, the Blue Jays had the highest team BA",
-      title: "Dodgers on Top",
+      title: "Batter Up!",
       align: "middle",
       wrap: 200,
       padding: 10
@@ -190,6 +190,29 @@ const makeAnnotations = d3.annotation()
 d3.select(".chart")
   .append("g")
   .call(makeAnnotations)
+
+              const annotations2 = [
+  {
+    note: {
+      label: "",
+      title: "Hover over bar to see BA",
+      align: "middle",
+      wrap: 200,
+      padding: 10
+    },
+    color: ["purple"],
+    x: 600,
+    y: 40,
+    dy: 0,
+    dx: 0
+  }
+]
+
+const makeAnnotations2 = d3.annotation()
+  .annotations(annotations2)
+d3.select(".chart")
+  .append("g")
+  .call(makeAnnotations2)
         count += 1
       }
       d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
