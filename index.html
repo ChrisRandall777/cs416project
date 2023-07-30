@@ -167,6 +167,29 @@ d3.select(".chart")
               .html("BA: " + d);
           }).on("mouseout",function(){d3.select("#tooltip").style("opacity",0)});
         d3.select("#prevbutton").style("opacity",1)
+
+        const annotations = [
+  {
+    note: {
+      label: "While the Dodgers had the most wins and lowest ERA, the Blue Jays had the highest team BA",
+      title: "Dodgers on Top",
+      align: "middle",
+      wrap: 200,
+      padding: 10
+    },
+    color: ["purple"],
+    x: 60,
+    y: 200,
+    dy: 50,
+    dx: 100
+  }
+]
+
+const makeAnnotations = d3.annotation()
+  .annotations(annotations)
+d3.select(".chart")
+  .append("g")
+  .call(makeAnnotations)
         count += 1
       }
       d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
