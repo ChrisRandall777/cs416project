@@ -22,7 +22,7 @@
    <h id="yaxis">Wins</h>
   </div>
   <div style="position:relative; left:355px; top:325px;">
-    <button onclick="prev()">Previous</button>
+    <button id="prevbutton" onclick="prev()" style="opacity:0">Previous</button>
     <button onclick="next()">Next</button>
   </div>
   <svg class="chart" width="1200" height="375">
@@ -69,6 +69,13 @@ d3.select(".chart")
 
     var count = 1
 
+    function prev(){
+      if(count == 3){
+        count = 1
+        next()
+      }
+    }
+    
     function next(){
       d3.select("svg").selectAll("*").remove()
       if(count == 1){
@@ -117,6 +124,7 @@ d3.select(".chart")
               .style("top",(d3.event.pageY)+"px")
               .html("BA: " + d);
           }).on("mouseout",function(){d3.select("#tooltip").style("opacity",0)});
+        d3.select("#prevbutton").style("opacity",1)
         count += 1
       }
       d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(yScale))
