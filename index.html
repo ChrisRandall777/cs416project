@@ -21,8 +21,10 @@
   <div style="text-align:center; position:relative; transform:rotate(-90deg); width:fit-content; height:fit-content; top:120px; left:40px;">
    <h id="yaxis">Wins</h>
   </div>
-  <button onclick="next()" style="position:relative; left:385px;">Next</button>
-  <button onclick="prev()" style="position:relative; left:385px;">Previous</button>
+  <div style="position:relative; left:385px;">
+    <button onclick="next()">Next</button>
+    <button onclick="prev()">Prev</button>
+  </div>
   <svg class="chart" width="1200" height="375">
   </svg>
   <div id="tooltip"></div>
